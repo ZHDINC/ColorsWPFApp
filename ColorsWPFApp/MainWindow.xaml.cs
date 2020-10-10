@@ -20,6 +20,9 @@ namespace ColorsWPFApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        public byte r = 55;
+        public byte g = 0;
+        public byte b = 0;
         public MainWindow()
         {
             InitializeComponent();
