@@ -15,23 +15,23 @@
             <RowDefinition/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0">
-            <StackPanel>
+        <Grid Grid.Column="0" >
+            <StackPanel x:Name="mrIntStackPanel">
                 <Label Content="Red"/>
-                <TextBox Name="currentRValue" Text="0"/>
+                <TextBox Name="currentRValue" Text="{Binding Path=Red, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextChanged="colorUpdated"/>
                 <Label Content="Blue"/>
-                <TextBox Name="currentGValue" Text="0"/>
+                <TextBox Name="currentGValue" Text="{Binding Path=Green, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextChanged="colorUpdated"/>
                 <Label Content="Green"/>
-                <TextBox Name="currentBValue" Text="0"/>
+                <TextBox Name="currentBValue" Text="{Binding Path=Blue, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextChanged="colorUpdated"/>
             </StackPanel>
         </Grid>
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" x:Name="mrIntSliders">
             <Label Content="Red Slider"/>
-            <Slider Name="rSlider" Maximum="255" Value="{Binding Path=currentRValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Margin="5,0,5,0"/>
+            <Slider Maximum="255" Value="{Binding Path=Red, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Green Slider"/>
-            <Slider Name="gSlider" Maximum="255" Value="{Binding Path=currentGValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Margin="5,0,5,0"/>
+            <Slider Maximum="255" Value="{Binding Path=Green, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
             <Label Content="Blue Slider"/>
-            <Slider Name="bSlider" Maximum="255" Value="{Binding Path=currentBValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Margin="5,0,5,0"/>
+            <Slider Maximum="255" Value="{Binding Path=Blue, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,5,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <Grid>
@@ -41,7 +41,7 @@
             </Grid>
             <Grid>
                 <Rectangle Margin="5,10,5,30" Fill="White" Width="30" Height="175" VerticalAlignment="Bottom"/>
-                <Rectangle Name="greenBar" Margin="5,10,5,30" Fill="Green" Width="30" Height="{Binding Path=currentGValue, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" VerticalAlignment="Bottom"/>
+                <Rectangle Name="greenBar" Margin="5,10,5,30" Fill="Green" Width="30" Height="5" VerticalAlignment="Bottom"/>
                 <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Green" Margin="0,0,0,10"/>
             </Grid>
             <Grid>
@@ -51,7 +51,7 @@
             </Grid>
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1" >
-            <Rectangle Margin="10" Fill="#000000"/>
+            <Rectangle x:Name="mrRectangle" Margin="10" Fill="{Binding NotifyOnSourceUpdated=True}"/>
         </Grid>
     </Grid>
 </Window>
